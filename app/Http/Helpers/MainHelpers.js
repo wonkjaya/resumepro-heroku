@@ -8,9 +8,7 @@ class MainHelpers {
 	}
 
 	get_host(){
-		console.log(ENV.get('PROTOCOL'));
-		return '';
-		if(ENV.get('PROTOCOL') === null) return '';
+		if(typeof(ENV.get('PROTOCOL')) === 'undefined') return '';
 		return `${ENV.get('PROTOCOL')}://${ENV.get('HOST')}:${ENV.get('PORT')}/`;
 	}
 	
