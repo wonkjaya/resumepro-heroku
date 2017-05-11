@@ -19,9 +19,7 @@ const Route = use('Route')
 
 
 // Route.on('/').render('welcome')
-Route.get('/', function(req, res){
-	res.send({"message":"welcome to resumepro API"});
-});
+Route.get('/', 'MainController.index');
 
 Route.group('service', function(){
 	Route.get('/', function(req, res){
