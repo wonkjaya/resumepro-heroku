@@ -8,8 +8,8 @@ class MainHelpers {
 	}
 
 	get_host(){
-		if(ENV.get('PROTOCOL') !== null) return '';
-		return `${ENV.get('PROTOCOL')}://${ENV.get('HOST')}:${ENV.get('PORT')}`;
+		if(ENV.get('PROTOCOL') === null) return '';
+		return `${ENV.get('PROTOCOL')}://${ENV.get('HOST')}:${ENV.get('PORT')}/`;
 	}
 	
 	menu(isHome){
