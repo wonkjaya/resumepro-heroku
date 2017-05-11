@@ -17,7 +17,11 @@
 
 const Route = use('Route')
 
+
 // Route.on('/').render('welcome')
+Route.get('/', function(req, res){
+	res.send({"message":"welcome to resumepro API"});
+});
 
 Route.group('service', function(){
 	Route.get('/', function(req, res){
@@ -26,3 +30,4 @@ Route.group('service', function(){
 	Route.get('generate', 'GeneratorController.generate')
 	Route.get('generate/save', 'GeneratorController.saveFile')
 }).prefix('service')
+
