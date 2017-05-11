@@ -1,36 +1,43 @@
 'use strict'
 
+const ENV = use('Env');
+
 class MainHelpers {
 
 	constructor(){
+	}
 
+	get_host(){
+		return `${ENV.get('PROTOCOL')}://${ENV.get('HOST')}:${ENV.get('PORT')}`;
 	}
 	
-	menu(active_menu){
+	menu(isHome){
+		var host = '';
+		if(isHome === false) host = this.get_host();
 		var menus = [
 			{
 				'label'	:'About',
-				'url'	:'#about',
+				'url'	:host+'#about',
 				'custom_class': ''
 			},
 			{
 				'label'	:'Invite Friends',
-				'url'	:'#invite-friends',
+				'url'	:host+'#invite-friends',
 				'custom_class': ''
 			},
 			{
 				'label'	:'Templates',
-				'url'	:'#templates',
+				'url'	:host+'#templates',
 				'custom_class': ''
 			},
 			{
 				'label'	:'Contact',
-				'url'	:'#contact',
+				'url'	:host+'#contact',
 				'custom_class': ''
 			},
 			{
 				'label'	:'Login',
-				'url'	:'#login',
+				'url'	:host+'/auth/login.html',
 				'custom_class': 'login-btn'
 			}
 		]

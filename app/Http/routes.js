@@ -20,10 +20,14 @@ const Route = use('Route')
 
 // Route.on('/').render('welcome')
 Route.get('/', 'MainController.index');
+Route.group('administration', function(){
+	Route.get('/login.html', 'MainController.login_page');
+	Route.post('/login.html', 'MainController.login');
+}).prefix('auth');
 
 Route.group('service', function(){
 	Route.get('/', function(req, res){
-		res.send("hello");
+		res.send({"api":"service"});
 	})
 	Route.get('generate', 'GeneratorController.generate')
 	Route.get('generate/save', 'GeneratorController.saveFile')
