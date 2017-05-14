@@ -1,8 +1,34 @@
 {
-	"header.nav-content.tab-content.fullname":"Nama Lengkap",
-	"header.nav-content.tab-content.phone":"No.Telp",
-	"header.nav-tabs.forgot":"Reset Pass",
-	"header.nav-tabs.login":"Masuk",
-	"header.nav-tabs.register":"Daftar",
+	"auth.header.nav-content.tab-content.fullname":"Nama Lengkap",
+	"auth.header.nav-content.tab-content.phone":"No.Telp",
+	"auth.header.nav-tabs.forgot":"Reset Pass",
+	"auth.header.nav-tabs.login":"Masuk",
+	"auth.header.nav-tabs.register":"Daftar",
+
+	"general.menu.about":"Info",
+	"general.menu.invite":"Undang Teman",
+	"general.menu.templates":"Template",
+	"general.menu.contact":"Kontak",
+	"general.menu.login":"Masuk",
+
+	"index.scroll1.h1":"BUAT RESUME ANDA SEMAKIN MENARIK SEKARANG",
+	"index.scroll1.description":"Kami membantu anda untuk mendapatkan tampilan resume anda semakin menarik dengan berbagai pilihan template yang tersedia",
+	"index.scroll1.register":"Daftar Sekarang",
+
+	"index.scroll2.h1":"Tentang Kami",
+	"index.scroll2.description":"Terdapat banyak sekali pilihan template yang tersedia sesuai dengan stardart resume yang ada sekarang ini",
+	"index.scroll2.getstarted":"Mulai Sekarang",
+
+	"index.scroll3.h1":"Undang Temanmu Sekarang",
+	"index.scroll3.description":"Bantu temanmu untuk lebih memudahkan mereka untuk membuat resumenya, itu adalah hal yang indah.",
+	"index.scroll3.send_invitation":"Kirim",
+	
+	"index.scroll4.more":"Lihat Lainnya",
+
+	"index.scroll5.h1":"Hubungi Kami",
+	"index.scroll5.description":"Kritik dan saran anda akan sangat membantu kami dalam memperbaiki service kami kedepannya.",
+	"index.scroll5.phonenumber":"+62 853 3015 4845",
+	"index.scroll5.emailinfo":"admin@resumepro.com",
+
 	"---":""
 }

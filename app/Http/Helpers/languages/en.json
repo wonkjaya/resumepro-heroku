@@ -1,8 +1,17 @@
 {
-	"header.nav-content.tab-content.fullname":"Fullname",
-	"header.nav-content.tab-content.phone":"Phone",
-	"header.nav-tabs.forgot":"Forgot",
-	"header.nav-tabs.login":"Login",
-	"header.nav-tabs.register":"Reg.",
+	"auth.header.nav-content.tab-content.fullname":"Fullname",
+	"auth.header.nav-content.tab-content.phone":"Phone",
+	"auth.header.nav-tabs.forgot":"Forgot",
+	"auth.header.nav-tabs.login":"Login",
+	"auth.header.nav-tabs.register":"Reg.",
+
+	"general.menu.about":"About",
+	"general.menu.invite":"Invite Friends",
+	"general.menu.templates":"Templates",
+	"general.menu.contact":"Contact",
+	"general.menu.login":"Login",
+
+	"index.h1.info":"BUAT RESUME ANDA SEMAKIN MENARIK SEKARANG",
+	"index.h1.description":"Kami membantu anda untuk mendapatkan tampilan resume anda semakin menarik dengan berbagai pilihan template yang tersedia",
 	"---":""
 }

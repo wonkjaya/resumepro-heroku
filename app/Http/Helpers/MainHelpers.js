@@ -17,27 +17,27 @@ class MainHelpers {
 		if(isHome === false) host = this.get_host();
 		var menus = [
 			{
-				'label'	:'About',
+				'label'	:'general.menu.about',
 				'url'	:host+'#about',
 				'custom_class': ''
 			},
 			{
-				'label'	:'Invite Friends',
+				'label'	:'general.menu.invite',
 				'url'	:host+'#invite-friends',
 				'custom_class': ''
 			},
 			{
-				'label'	:'Templates',
+				'label'	:'general.menu.templates',
 				'url'	:host+'#templates',
 				'custom_class': ''
 			},
 			{
-				'label'	:'Contact',
+				'label'	:'general.menu.contact',
 				'url'	:host+'#contact',
 				'custom_class': ''
 			},
 			{
-				'label'	:'Login',
+				'label'	:'general.menu.login',
 				'url'	:host+'/auth/login.html',
 				'custom_class': 'login-btn'
 			}

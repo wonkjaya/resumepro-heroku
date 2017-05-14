@@ -15,6 +15,7 @@ class MainController {
 		var _this = {};
 			_this.site_url = SiteURL;
 			_this.menu = new MainHelper().menu();
+			_this.lang = new Lang(my_language).get_translate;
 			_this.templates = [
                         {'name':'Profesional Resume 1', 'image':'template-1.jpg', 'link':''},
                         {'name':'Profesional Resume 2', 'image':'template-2.jpg', 'link':''},
