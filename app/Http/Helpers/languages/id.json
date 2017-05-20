@@ -1,9 +1,20 @@
 {
-	"auth.header.nav-content.tab-content.fullname":"Nama Lengkap",
-	"auth.header.nav-content.tab-content.phone":"No.Telp",
-	"auth.header.nav-tabs.forgot":"Reset Pass",
-	"auth.header.nav-tabs.login":"Masuk",
-	"auth.header.nav-tabs.register":"Daftar",
+  "REGISTER FORM":"",
+	"auth.register":"Daftar",
+	"auth.register.fullname":"Nama Lengkap",
+	"auth.register.phone":"No.Telp",
+	"auth.register.email":"Email",
+	"auth.register.password":"Password",
+	"auth.register.confirm_pass":"Ulangi Password",
+	"auth.register.submit":"Simpan & Daftar",
+	"auth.register.cancel":"Batalkan",
+
+  "FORGOT PASS FORM":"",
+	"auth.forgot":"Reset Pass",
+
+  "LOGIN FORM":"",
+	"auth.login":"Masuk",
+	
 
 	"general.menu.about":"Info",
 	"general.menu.invite":"Undang Teman",
@@ -29,6 +40,8 @@
 	"index.scroll5.description":"Kritik dan saran anda akan sangat membantu kami dalam memperbaiki service kami kedepannya.",
 	"index.scroll5.phonenumber":"+62 853 3015 4845",
 	"index.scroll5.emailinfo":"admin@resumepro.com",
+
+
 
 	"---":""
 }

@@ -11,6 +11,7 @@
 |
 */
 const providers = [
+  'adonis-validation-provider/providers/ValidatorProvider',
   'adonis-framework/providers/ConfigProvider',
   'adonis-framework/providers/EnvProvider',
   'adonis-framework/providers/EventProvider',
@@ -63,6 +64,7 @@ const aceProviders = [
 |
 */
 const aliases = {
+  AdminFirebase: 'firebase-admin',
   Command: 'Adonis/Src/Command',
   Config: 'Adonis/Src/Config',
   Database: 'Adonis/Src/Database',
@@ -75,6 +77,7 @@ const aliases = {
   Middleware: 'Adonis/Src/Middleware',
   Route: 'Adonis/Src/Route',
   Schema: 'Adonis/Src/Schema',
+  Validator: 'Adonis/Addons/Validator',
   View: 'Adonis/Src/View',
   Ws: 'Adonis/Addons/Ws'
 }

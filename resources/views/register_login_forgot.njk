@@ -75,17 +75,17 @@
                                             <ul class="nav nav-tabs">
                                                 <li class="active">
                                                     <a href="#Login" data-toggle="tab" class="login-tab-custom">
-                                                        {{lang('auth.header.nav-tabs.login')}}
+                                                        {{lang('auth.login')}}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#Registration" data-toggle="tab" class="login-tab-custom">
-                                                        {{lang('auth.header.nav-tabs.register')}}
+                                                        {{lang('auth.register')}}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#forgot" data-toggle="tab" class="login-tab-custom">
-                                                        {{lang('auth.header.nav-tabs.forgot')}}
+                                                        {{lang('auth.forgot')}}
                                                     </a>
                                                 </li>
                                             </ul>
@@ -119,49 +119,65 @@
                                                 {{ form.close() }}
                                                 </div>
                                                 <div class="tab-pane" id="Registration">
-                                                {{ form.open({url: '/login', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
+                                                {{ form.open({url: '/auth/register.html', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
                                                 {{ csrfField }}
 
                                                     <div class="form-group">
                                                         <label for="name" class="col-sm-4 control-label">
-                                                            {{lang('auth.header.nav-content.tab-content.fullname')}}
+                                                            {{lang('auth.register.fullname')}}
                                                         </label>
                                                         <div class="col-sm-8">
                                                             {{ form.text('name', '', {placeholder:'john doe', class: 'form-control', id:'name'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="email" class="col-sm-4 control-label">Email</label>
+                                                        <label for="email" class="col-sm-4 control-label">
+                                                            {{lang('auth.register.email')}}
+                                                        </label>
                                                         <div class="col-sm-8">
                                                             {{ form.email('email', '', {placeholder:'your-email@domain.com', class:'form-control', id:'email'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="mobile" class="col-sm-4 control-label">
-                                                            {{lang('auth.header.nav-content.tab-content.phone')}}
+                                                            {{lang('auth.register.phone')}}
                                                         </label>
                                                         <div class="col-sm-8">
                                                             {{ form.text('mobile', '', {placeholder:'08530001200',class:'form-control', id:'mobile'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="password" class="col-sm-4 control-label">Password</label>
+                                                        <label for="password" class="col-sm-4 control-label">
+                                                            {{lang('auth.register.password')}}
+                                                        </label>
                                                         <div class="col-sm-8">
                                                             {{ form.password('password', '', {placeholder:'***',class:'form-control',id:'password'}) }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password" class="col-sm-4 control-label">
+                                                            {{lang('auth.register.confirm_pass')}}
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            {{ form.password('conf_password', '', {placeholder:'***',class:'form-control',id:'conf_password'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-4">
                                                         </div>
                                                         <div class="col-sm-8">
-                                                            <button type="button" class="btn btn-primary btn-sm">Save & Continue</button>
-                                                            <button type="button" class="btn btn-default btn-sm">Cancel</button>
+                                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                                {{lang('auth.register.submit')}}
+                                                            </button>
+                                                            <button type="button" class="btn btn-default btn-sm">
+                                                                {{lang('auth.register.cancel')}}
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 {{ form.close() }}
                                                 </div>
                                                 <div class="tab-pane" id="forgot">
-                                                {{ form.open({url: '/login', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
+                                                {{ form.open({url: '/auth/forgot_pass', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
                                                 {{ csrfField }}
 
                                                     <div class="form-group">

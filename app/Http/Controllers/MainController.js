@@ -2,8 +2,10 @@
 
 const MainHelper = use('App/Http/Helpers/MainHelpers');
 const Lang = use('App/Http/Helpers/LanguageHelpers');
-const SiteURL = new MainHelper().get_host();
 const my_language = 'id';
+const SiteURL = new MainHelper().get_host();
+const firebaseModel = use('App/Model/Firebase');
+const Validator = use('Validator')
 
 class MainController {
 
@@ -36,7 +38,33 @@ class MainController {
 	}
 
 	* login(req, res){
+		
+	}
 
+	* register(req, res){
+		let data = req.only('email','fullname','phonenumber','password','conf_password');
+
+	}
+
+
+
+	* inserttest(req, res){
+
+		var fire = new firebaseModel().main(req.all());
+
+		res.end()
+	}
+
+	* showtest(req, res){
+		var fire = new firebaseModel().show(function(e, r){
+			res.send(r)
+		});
+	}
+
+	* updatetest(req, res){
+		var fire = new firebaseModel().updateData(function(e, r){
+			res.send(r)
+		});
 	}
 }
 

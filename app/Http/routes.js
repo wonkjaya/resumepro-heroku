@@ -20,6 +20,10 @@ const Route = use('Route')
 
 // Route.on('/').render('welcome')
 Route.get('/', 'MainController.index');
+Route.post('insert', 'MainController.inserttest');
+Route.get('show', 'MainController.showtest');
+Route.get('update', 'MainController.updatetest');
+
 Route.group('administration', function(){
 	Route.get('/login.html', 'MainController.login_page');
 	Route.post('/login.html', 'MainController.login');
