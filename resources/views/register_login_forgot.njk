@@ -73,17 +73,17 @@
                                         <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
                                             <!-- Nav tabs -->
                                             <ul class="nav nav-tabs">
-                                                <li class="active">
+                                                <li class="{{login_panel}}">
                                                     <a href="#Login" data-toggle="tab" class="login-tab-custom">
                                                         {{lang('auth.login')}}
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li class="{{register_panel}}">
                                                     <a href="#Registration" data-toggle="tab" class="login-tab-custom">
                                                         {{lang('auth.register')}}
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li class="{{forgot_panel}}">
                                                     <a href="#forgot" data-toggle="tab" class="login-tab-custom">
                                                         {{lang('auth.forgot')}}
                                                     </a>
@@ -91,7 +91,7 @@
                                             </ul>
                                             <!-- Tab panes -->
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="Login">
+                                                <div class="tab-pane {{login_panel}}" id="Login">
                                                 {{ form.open({url: '/login', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
                                                 {{ csrfField }}
 
@@ -118,16 +118,18 @@
                                                     </div>
                                                 {{ form.close() }}
                                                 </div>
-                                                <div class="tab-pane" id="Registration">
+                                                <div class="tab-pane {{register_panel}}" id="Registration">
                                                 {{ form.open({url: '/auth/register.html', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
                                                 {{ csrfField }}
-
+                                                {% if validation %}
+                                                    <div class="alert alert-{{alert_type}}">{{lang(validation.message)}}</div>
+                                                {% endif %}
                                                     <div class="form-group">
                                                         <label for="name" class="col-sm-4 control-label">
                                                             {{lang('auth.register.fullname')}}
                                                         </label>
                                                         <div class="col-sm-8">
-                                                            {{ form.text('name', '', {placeholder:'john doe', class: 'form-control', id:'name'}) }}
+                                                            {{ form.text('fullname', '', {placeholder:'john doe', class: 'form-control', id:'name'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -143,7 +145,7 @@
                                                             {{lang('auth.register.phone')}}
                                                         </label>
                                                         <div class="col-sm-8">
-                                                            {{ form.text('mobile', '', {placeholder:'08530001200',class:'form-control', id:'mobile'}) }}
+                                                            {{ form.text('phonenumber', '', {placeholder:'08530001200',class:'form-control', id:'mobile'}) }}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -176,7 +178,7 @@
                                                     </div>
                                                 {{ form.close() }}
                                                 </div>
-                                                <div class="tab-pane" id="forgot">
+                                                <div class="tab-pane {{forgot_panel}}" id="forgot">
                                                 {{ form.open({url: '/auth/forgot_pass', method:'POST', class:'form-horizontal', style:'margin-top:10px'}) }}
                                                 {{ csrfField }}
 

@@ -9,6 +9,14 @@
 	"auth.register.submit":"Simpan & Daftar",
 	"auth.register.cancel":"Batalkan",
 
+	"message.conf_password.same":"Kata Sandi tidak Cocok",
+	"message.email.required":"Email dibutuhkan",
+	"message.fullname.required":"Nama Lengkap dibutuhkan",
+	"message.phonenumber.required":"Nomor Telpon dibutuhkan",
+	"message.password.6.minchar":"Password Minimal 6 Karakter",
+	"message.password.required":"Kata Sandi dibutuhkan",
+	"messages.registration.success":"Selamat, Anda berhasil bergabung. Silahkan Cek Email Untuk Konfirmasi",
+
   "FORGOT PASS FORM":"",
 	"auth.forgot":"Reset Pass",
 

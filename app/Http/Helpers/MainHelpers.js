@@ -38,7 +38,7 @@ class MainHelpers {
 			},
 			{
 				'label'	:'general.menu.login',
-				'url'	:host+'/auth/login.html',
+				'url'	:host+'auth/login.html',
 				'custom_class': 'login-btn'
 			}
 		]

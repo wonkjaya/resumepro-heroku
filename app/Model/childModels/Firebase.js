@@ -20,7 +20,8 @@ class Firebase {
 // BASE CRUD FUNCTIONS
 
 	insert(collection, data) {
-		var id = (data.email).replace(/\./g, '').replace('@','');
+		data._id = shortid.generate();
+		var id = (data.email)?(data.email).replace(/\./g, '').replace('@',''):new Date().getTime();
 		var ref = this.database.ref(collection).child(id)
 	  return ref.set(data);
 	}
@@ -43,9 +44,21 @@ class Firebase {
 
 // END BASE CRUD FUNCTIONS
 
+	registering_user(options){
+		if(!options.data) return 'data not defined';
+		this.insert('users', options.data);
+		return 'success'
+	}
+
+	email_logs(options){
+		if(!options.data) return 'data not defined';
+		this.insert('email_logs', options.data);
+		return 'success'
+	}
+
 	main(data){
 		console.log(data)
-		this.insert('users', data);
+		// this.insert('users', data);
 	}
 
 	show(callback){

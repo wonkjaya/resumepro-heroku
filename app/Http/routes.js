@@ -25,8 +25,9 @@ Route.get('show', 'MainController.showtest');
 Route.get('update', 'MainController.updatetest');
 
 Route.group('administration', function(){
-	Route.get('/login.html', 'MainController.login_page');
-	Route.post('/login.html', 'MainController.login');
+	Route.get('/login.html', 'MainController.login_page'); // page
+	Route.post('/login.html', 'MainController.login'); // backend
+	Route.post('/register.html', 'MainController.register'); // backend
 }).prefix('auth');
 
 Route.group('service', function(){
@@ -37,3 +38,6 @@ Route.group('service', function(){
 	Route.get('generate/save', 'GeneratorController.saveFile')
 }).prefix('service')
 
+Route.any('*', function *(req, res){
+	res.send({message :"url not found"});
+})
