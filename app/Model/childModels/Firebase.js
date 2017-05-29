@@ -37,6 +37,15 @@ class Firebase {
 		})
 	}
 
+	getById(collection, Id, cb){
+		this.database
+			.ref(`${collection}/${Id}`)
+			.on('value', function(data){
+				console.log(data.child('_id').val())
+				return cb(data)
+			})
+	}
+
 	update(collection, criteria, data, callback){ // criteria: array, data:object
 		var ref = this.database.ref(collection).push()
 		return callback(null, ref.update(data));
@@ -44,40 +53,61 @@ class Firebase {
 
 // END BASE CRUD FUNCTIONS
 
+	login_user(options){
+		if(!options.data) return 'data not defined';
+		try{
+			let email = (options.data.email).replace(/\./g, '').replace('@','');
+			return new Promise((resolve, reject) => {
+				this.getById('users', email, function(body){
+					console.log(body.child('_id').val())
+					if(body.child('password').val() !== null) return resolve({status:200, password:body.child('password').val()})
+						else
+							return resolve({status:404})
+				});
+			});
+		}catch(e){
+			return e
+		}
+	}
+
 	registering_user(options){
 		if(!options.data) return 'data not defined';
-		this.insert('users', options.data);
+		try{
+			this.insert('users', options.data);
+		}catch(e){
+			return e
+		}
 		return 'success'
 	}
 
 	email_logs(options){
 		if(!options.data) return 'data not defined';
-		this.insert('email_logs', options.data);
+		try{
+			this.insert('email_logs', options.data);
+		}catch(e){
+			return e
+		}
 		return 'success'
 	}
 
-	main(data){
-		console.log(data)
-		// this.insert('users', data);
-	}
-
-	show(callback){
-		return callback(null, null)
-		// this.show('users', {}, function(error, result){
-		// 	return callback(error, result);
-		// })
-	}
-
-	updateData(callback){
-		var data = {
-			'email':'rohmanahmad@gmail.com',
-			'password':'kucingku'
+	forgot_password(options){
+		if(!options.data.email) return 'data not defined';
+		try{
+			let email = (options.data.email).replace(/\./g, '').replace('@','');
+			return new Promise((resolve, reject) => {
+				this.getById('users', email, function(body){
+					console.log(body.child('_id').val())
+					if(body.child('_id').val() !== null) resolve({status:200, id:body.child('_id').val()})
+						else
+							resolve({status:404})
+			        return true
+				});
+		    });
+		}catch(e){
+			return e
 		}
-		this.update('users', [], data, function(e, r){
-			return callback(e, r)
-		})
-		
 	}
+
 }
 
 module.exports = Firebase

@@ -20,6 +20,19 @@ class ValidationRules{
 			conf_password : 'same:password'
 		}
 	}
+
+	static get forgot_password(){
+		return {
+			email : 'required|email'
+		}
+	}
+
+	static get user_login(){
+		return {
+			email : 'required|email',
+			password :'required'
+		}
+	}
 }
 
 module.exports = ValidationRules

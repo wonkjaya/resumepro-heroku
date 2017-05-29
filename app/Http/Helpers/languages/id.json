@@ -1,5 +1,6 @@
 {
   "REGISTER FORM":"",
+	
 	"auth.register":"Daftar",
 	"auth.register.fullname":"Nama Lengkap",
 	"auth.register.phone":"No.Telp",
@@ -19,6 +20,9 @@
 
   "FORGOT PASS FORM":"",
 	"auth.forgot":"Reset Pass",
+	"auth.forgot.submit":"Reset Pass",
+	"messages.forgot.success":"Silahkan Cek Email Untuk Reset Password Anda",
+	"messages.forgot.notfound":"Email Belum Terdaftar.",
 
   "LOGIN FORM":"",
 	"auth.login":"Masuk",
@@ -29,6 +33,11 @@
 	"general.menu.templates":"Template",
 	"general.menu.contact":"Kontak",
 	"general.menu.login":"Masuk",
+	"general.menu.logout":"Keluar",
+
+	"general.menu.admin.settings":"Pengaturan",
+	"general.menu.admin.my_profile":"User",
+	"general.menu.admin.info":"Informasi",
 
 	"index.scroll1.h1":"BUAT RESUME ANDA SEMAKIN MENARIK SEKARANG",
 	"index.scroll1.description":"Kami membantu anda untuk mendapatkan tampilan resume anda semakin menarik dengan berbagai pilihan template yang tersedia",
@@ -51,5 +60,5 @@
 
 
 
-	"---":""
+	"none":""
 }

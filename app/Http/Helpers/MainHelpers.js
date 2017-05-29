@@ -4,17 +4,13 @@ const ENV = use('Env');
 
 class MainHelpers {
 
-	constructor(){
-	}
-
-	get_host(){
-		if(typeof(ENV.get('PROTOCOL')) === 'undefined') return '';
-		return `${ENV.get('PROTOCOL')}://${ENV.get('HOST')}:${ENV.get('PORT')}/`;
+	constructor(options){
+		this.base_url = (typeof(options) !== 'undefined') ? options.base_url : '';
 	}
 	
 	menu(isHome){
 		var host = '';
-		if(isHome === false) host = this.get_host();
+		if(isHome === false) host = this.base_url;
 		var menus = [
 			{
 				'label'	:'general.menu.about',
@@ -38,8 +34,51 @@ class MainHelpers {
 			},
 			{
 				'label'	:'general.menu.login',
-				'url'	:host+'auth/login.html',
+				'url'	:host+'/auth/login.html',
 				'custom_class': 'login-btn'
+			}
+		]
+		return menus;
+	}
+	
+	admin_menu(isHome){
+		var host = '';
+		if(isHome === false) host = this.base_url;
+		var menus = [
+			{
+				'label'	:'none',
+				'url'	:'#search',
+				'li_class': '',
+				'icon_class': 'glyphicon glyphicon-search',
+				'custom_class': ''
+			},
+			{
+				'label'	:'general.menu.admin.info',
+				'url'	:'#info',
+				'li_class': 'visible-xs',
+				'icon_class': 'glyphicon glyphicon-info-sign',
+				'custom_class': ''
+			},
+			{
+				'label'	:'general.menu.admin.my_profile',
+				'url'	:'#profile',
+				'li_class': 'visible-xs',
+				'icon_class': 'glyphicon glyphicon-user',
+				'custom_class': ''
+			},
+			{
+				'label'	:'general.menu.admin.settings',
+				'url'	:'#settings',
+				'li_class': 'visible-xs',
+				'icon_class': 'glyphicon glyphicon-cog',
+				'custom_class': ''
+			},
+			{
+				'label'	:'general.menu.logout',
+				'url'	:host+'/auth/logout.html',
+				'li_class': 'visible-xs',
+				'icon_class': 'glyphicon glyphicon-log-out',
+				'custom_class': 'logout-btn'
 			}
 		]
 		return menus;

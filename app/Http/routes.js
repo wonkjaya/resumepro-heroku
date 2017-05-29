@@ -20,15 +20,16 @@ const Route = use('Route')
 
 // Route.on('/').render('welcome')
 Route.get('/', 'MainController.index');
-Route.post('insert', 'MainController.inserttest');
-Route.get('show', 'MainController.showtest');
-Route.get('update', 'MainController.updatetest');
+Route.get('/showtest', 'MainController.showtest');
 
 Route.group('administration', function(){
 	Route.get('/login.html', 'MainController.login_page'); // page
+	Route.get('/logout.html', 'MainController.logout'); // backend
+	
+	Route.post('/forgot_password.html', 'MainController.forgot_password'); // backend
 	Route.post('/login.html', 'MainController.login'); // backend
 	Route.post('/register.html', 'MainController.register'); // backend
-}).prefix('auth');
+}).prefix('auth').middleware('url');
 
 Route.group('service', function(){
 	Route.get('/', function(req, res){
@@ -37,6 +38,11 @@ Route.group('service', function(){
 	Route.get('generate', 'GeneratorController.generate')
 	Route.get('generate/save', 'GeneratorController.saveFile')
 }).prefix('service')
+
+Route.group('dashboard', function(){
+	Route.get('/', 'DashboardController.index');
+	Route.get('default.html', 'DashboardController.default');
+}).prefix('dashboard').middleware('userauth').middleware('url');
 
 Route.any('*', function *(req, res){
 	res.send({message :"url not found"});

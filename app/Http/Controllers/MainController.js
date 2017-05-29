@@ -5,7 +5,7 @@ const Lang = use('App/Http/Helpers/LanguageHelpers');
 const MainHelper = use('App/Http/Helpers/MainHelpers');
 const Model = use('App/Model/base');
 const my_language = 'id';
-const SiteURL = new MainHelper().get_host();
+// const SiteURL = new MainHelper().get_host();
 const translate = new Lang(my_language).get_translate;
 const Validator = use('Validator')
 const validationRules = use('App/Http/Helpers/ValidationRules')
@@ -18,8 +18,8 @@ class MainController {
 
 	* index(req, res){
 		var _this = {};
-			_this.site_url = SiteURL;
-			_this.menu = new MainHelper().menu();// global declaration
+			_this.site_url = req.base_url;
+			_this.menu = new MainHelper({'base_url':_this.site_url}).menu();// global declaration
 			_this.lang = translate; // global declaration
 			_this.templates = [
                         {'name':'Profesional Resume 1', 'image':'template-1.jpg', 'link':''},
@@ -35,14 +35,42 @@ class MainController {
 	* login_page(req, res){
 		var _this = {};
 			_this.login_panel = 'active';
-			_this.menu = new MainHelper().menu(false);
+			_this.site_url = req.base_url;
+			_this.menu = new MainHelper({'base_url':_this.site_url}).menu(false);
 			_this.lang = translate;
-			_this.site_url = SiteURL;
 		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
 	* login(req, res){
-		
+		const Hash = use('Hash');
+		const data = req.only('email','password');
+		const messages = validationRules.validation_messages;
+		const validation = yield Validator.validate(data, validationRules.user_login, messages);
+		var firebase = new Model('Firebase');
+		var exec = yield firebase.execute('login_user', {data});
+		if(exec.status === 200){
+			let is_same = yield Hash.verify(data.password, exec.password); // Verifying Password
+			if (is_same) {
+				yield req.session.put('user_session_token', exec.password);
+				var logs = firebase.execute('access_logs', {
+		    		'data':{
+		    			'type':'login',
+		    			'time':new Date().getTime(),
+		    			'to': data.email
+		    		}
+		    	});
+				res.redirect('/dashboard/default.html')
+			}else{
+				res.json({'message':'password tidak cocok'})
+			}
+		}else{
+			res.json({'message':'login failed'})
+		}
+	}
+
+	* logout(req, res){
+		yield req.session.forget('user_session_token')
+		res.redirect('/')
 	}
 
 	* register(req, res){
@@ -50,9 +78,9 @@ class MainController {
 		var _this = {};
 			_this.validation = {};
 			_this.register_panel = 'active';
-			_this.menu = new MainHelper().menu(false);
+			_this.site_url = req.base_url;
+			_this.menu = new MainHelper({'base_url':_this.site_url}).menu(false);
 			_this.lang = translate;
-			_this.site_url = SiteURL;
 		var data = req.only('email','fullname','phonenumber','password','conf_password');
 		const messages = validationRules.validation_messages;
 		const validation = yield Validator.validate(data, validationRules.user_registration, messages);
@@ -77,12 +105,13 @@ class MainController {
 
 		    	var logs = firebase.execute('email_logs', {
 		    		'data':{
-		    			'type':'sent',
+		    			'type':'sent_register',
 		    			'time':new Date().getTime(),
 		    			'to': data.email
 		    		}
 		    	});
 		    	
+		    	_this.validation.register = true;
 		    	_this.validation.message = 'messages.registration.success';
 		      	_this.alert_type = 'success';
 		    }
@@ -91,26 +120,42 @@ class MainController {
 		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
+	* forgot_password(req, res){
+		var _this = {};
+			_this.validation = {};
+			_this.forgot_panel = 'active';
+			_this.site_url = req.base_url;
+			_this.menu = new MainHelper({'base_url':_this.site_url}).menu(false);
+			_this.lang = translate;
+		var data = req.only('email');
+		const messages = validationRules.validation_messages;
+		const validation = yield Validator.validate(data, validationRules.forgot_password, messages);
+		var firebase = new Model('Firebase');
+		var exec = yield firebase.execute('forgot_password', {data});
+		if(exec.status === 200){
+	    	// sending email
+	    	var mailgunEmail = new Email('Mailgun');
+	    	var send = yield mailgunEmail.execute('sendmail', {to:data.email, subject:'forgot password', body:'body of forgot password'});
 
-// ------testing----------//
-	* inserttest(req, res){
-
-		var fire = new firebaseModel().main(req.all());
-
-		res.end()
+	    	var logs = firebase.execute('email_logs', {
+	    		'data':{
+	    			'type':'sent_forgot',
+	    			'time':new Date().getTime(),
+	    			'to': data.email
+	    		}
+	    	});
+	    	
+	    	_this.validation.forgot = true;
+	    	_this.validation.message = 'messages.forgot.success';
+	      	_this.alert_type = 'success';
+		}else{
+	    	_this.validation.forgot = true;
+	    	_this.validation.message = 'messages.forgot.notfound';
+	      	_this.alert_type = 'warning';
+		}
+		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
-	* showtest(req, res){
-		var fire = new firebaseModel().show(function(e, r){
-			res.send(r)
-		});
-	}
-
-	* updatetest(req, res){
-		var fire = new firebaseModel().updateData(function(e, r){
-			res.send(r)
-		});
-	}
 }
 
 module.exports = MainController
