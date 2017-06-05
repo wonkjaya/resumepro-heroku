@@ -76,28 +76,56 @@ class MainHelpers {
 					'start_name':'start1', 
 					'end_name':'end1', 
 					'desc_name':'description1',
+					'company_name':'company1',
 					'title_value':'',
 					'start_value':'',
 					'end_value':'',
 					'desc_value':'',
+					'company_value':'',
 					'title_class':'form-control',
 					'start_class':'form-control',
 					'end_class':'form-control',
-					'desc_class':'form-control'
+					'desc_class':'form-control',
+					'company_class':'form-control'
 				},
 				{
 					'title_name':'title2', 
 					'start_name':'start2', 
 					'end_name':'end2', 
 					'desc_name':'description2',
+					'company_name':'company2',
 					'title_value':'',
 					'start_value':'',
 					'end_value':'',
 					'desc_value':'',
+					'company_value':'',
 					'title_class':'form-control',
 					'start_class':'form-control',
 					'end_class':'form-control',
-					'desc_class':'form-control'
+					'desc_class':'form-control',
+					'company_class':'form-control'
+				}
+			],
+			"certifications":[
+				{
+					'title_name':'title1', 
+					'title_value':'', 
+					'period_name':'period1', 
+					'period_value':'', 
+					'instance_name':'instance1', 
+					'instance_value':'', 
+					'desc_name':'description1',
+					'desc_value':'',
+				},
+				{
+					'title_name':'title2', 
+					'title_value':'', 
+					'period_name':'period2', 
+					'period_value':'',
+					'instance_name':'instance2',
+					'instance_value':'',  
+					'desc_name':'description2',
+					'desc_value':'',
 				}
 			]
 		}
