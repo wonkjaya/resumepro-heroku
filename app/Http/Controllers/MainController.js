@@ -32,40 +32,54 @@ class MainController {
 		yield res.sendView('index', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
-	* login_page(req, res){
+	* login(req, res){
 		var _this = {};
 			_this.login_panel = 'active';
 			_this.site_url = req.base_url;
 			_this.menu = new MainHelper({'base_url':_this.site_url}).menu(false);
 			_this.lang = translate;
-		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
-	}
-
-	* login(req, res){
+			_this.validation = {};
 		const Hash = use('Hash');
 		const data = req.only('email','password');
 		const messages = validationRules.validation_messages;
 		const validation = yield Validator.validate(data, validationRules.user_login, messages);
-		var firebase = new Model('Firebase');
-		var exec = yield firebase.execute('login_user', {data});
-		if(exec.status === 200){
-			let is_same = yield Hash.verify(data.password, exec.password); // Verifying Password
-			if (is_same) {
-				yield req.session.put('user_session_token', exec.password);
-				var logs = firebase.execute('access_logs', {
-		    		'data':{
-		    			'type':'login',
-		    			'time':new Date().getTime(),
-		    			'to': data.email
-		    		}
-		    	});
-				res.redirect('/dashboard/default.html')
+		if (validation.fails()) { 
+	    	_this.validation.message = validation.messages()[0].message;
+	    }else{ // passed
+			var firebase = new Model('Firebase');
+			var exec = yield firebase.execute('login_user', {data});
+			_this.validation.login = true;
+			if(exec.status === 200){
+				let is_same = yield Hash.verify(data.password, exec.data.password); // Verifying Password
+				if (is_same) {
+					if(!exec.data.is_active){
+						console.log(exec.data)
+						_this.validation.message ='messages.login.need_verification'
+					}else if(exec.data.is_banned){
+						_this.validation.message ='messages.login.banned'
+					}else{
+						console.log('pass')
+						yield req.session.put('user_session_token', exec.data.password);
+						var logs = firebase.execute('access_logs', {
+				    		'data':{
+				    			'type':'login',
+				    			'time':new Date().getTime(),
+				    			'to': data.email
+				    		}
+				    	});
+				    	if(data.email === 'rohmanmail@gmail.com'){
+							res.redirect('/dashboard/default.html') // khusus administrator aja
+				    	}else{
+				    		res.redirect('/clients/main.html')
+				    	}
+					}
+				}
 			}else{
-				res.json({'message':'password tidak cocok'})
+				_this.validation.message ='messages.login.failed'	
 			}
-		}else{
-			res.json({'message':'login failed'})
 		}
+     	_this.alert_type = 'danger';
+		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
 	* logout(req, res){

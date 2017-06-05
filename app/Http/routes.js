@@ -23,7 +23,7 @@ Route.get('/', 'MainController.index');
 Route.get('/showtest', 'MainController.showtest');
 
 Route.group('administration', function(){
-	Route.get('/login.html', 'MainController.login_page'); // page
+	Route.get('/login.html', 'MainController.login'); // page
 	Route.get('/logout.html', 'MainController.logout'); // backend
 	
 	Route.post('/forgot_password.html', 'MainController.forgot_password'); // backend
@@ -42,7 +42,15 @@ Route.group('service', function(){
 Route.group('dashboard', function(){
 	Route.get('/', 'DashboardController.index');
 	Route.get('default.html', 'DashboardController.default');
+	Route.get('users.html', 'DashboardController.users');
+	Route.get('logs.html', 'DashboardController.logs');
 }).prefix('dashboard').middleware('userauth').middleware('url');
+
+Route.group('clients', function(){
+	Route.get('/', 'ClientsController.main');
+	Route.get('main.html', 'ClientsController.main');
+	Route.get('my_profile.html', 'ClientsController.my_profile');
+}).prefix('clients').middleware('userauth').middleware('url');
 
 Route.any('*', function *(req, res){
 	res.send({message :"url not found"});
