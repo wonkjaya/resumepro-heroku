@@ -47,21 +47,36 @@ class MainHelpers {
 				},
 				{
 					'label':'profile.form.marital_status', 
-					'type':'text',
+					'type':'dropdown',
 					'name':'marital_status',
-					'class':'form-control'
+					'class':'form-control',
+					'child':[
+						{'label':'profile.form.singgle','value':'0'},
+						{'label':'profile.form.married','value':'1'},
+						{'label':'profile.form.widow_widower','value':'2'},
+						{'label':'profile.form.other','value':'3'}
+					]
 				},
 				{
 					'label':'profile.form.religion', 
-					'type':'text',
+					'type':'dropdown',
 					'name':'religion',
-					'class':'form-control'
+					'class':'form-control',
+					'child':[
+						{'label':'profile.form.islam','value':'0'},
+						{'label':'profile.form.kristen','value':'1'},
+						{'label':'profile.form.hindu','value':'2'},
+						{'label':'profile.form.budha','value':'3'},
+						{'label':'profile.form.konghucu','value':'4'},
+						{'label':'profile.form.other','value':'5'}
+					]
 				},
 				{
 					'label':'profile.form.nationality', 
 					'type':'text',
 					'name':'nationality',
-					'class':'form-control'
+					'class':'form-control',
+					'value':'Indonesia'
 				},
 				{
 					'label':'profile.form.phonenumber', 

@@ -1,3 +1,8 @@
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
 <div class="row block-flat content">
   <form class="">
     <div class="col-md-12">
@@ -15,11 +20,17 @@
                 </td>
                 <td>
                   {%if f.type === 'text' %}
-                    <input type="{{f.type}}" class="{{f.class}}" style="width:100%">
+                    <input type="{{f.type}}" name="{{f.name}}" class="{{f.class}}" style="width:100%" value="{{f.value}}">
                   {% elseif f.type === 'radio' %}
                     {% asyncAll ch in f.child %}
                       <input type="{{f.type}}" name="{{f.name}}" class="{{ch.class}}" value="{{ch.value}}"> {{lang(ch.label)}}
                     {% endall %}
+                  {% elseif f.type === 'dropdown' %}
+                    <select name="{{f.name}}" class="{{f.class}}" style="width:100%">
+                      {% asyncAll ch in f.child %}
+                        <option value="{{ch.value}}"> {{lang(ch.label)}}</option>
+                      {% endall %}
+                    </select>
                   {%endif%}
                 </td>
               </tr>
@@ -109,3 +120,16 @@
     </div>
   </form>
 </div>
+<script type="text/javascript">
+$(function() {
+    $('input[name="date_of_birth"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    }, 
+    function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        var text = "You are {years} years old."
+        alert(text.replace('{years}', years));
+    });
+});
+</script>

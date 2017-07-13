@@ -53,12 +53,10 @@ class MainController {
 				let is_same = yield Hash.verify(data.password, exec.data.password); // Verifying Password
 				if (is_same) {
 					if(!exec.data.is_active){
-						console.log(exec.data)
 						_this.validation.message ='messages.login.need_verification'
 					}else if(exec.data.is_banned){
 						_this.validation.message ='messages.login.banned'
 					}else{
-						console.log('pass')
 						yield req.session.put('user_session_token', exec.data.password);
 						var logs = firebase.execute('access_logs', {
 				    		'data':{
@@ -75,6 +73,7 @@ class MainController {
 					}
 				}
 			}else{
+				console.log(exec)
 				_this.validation.message ='messages.login.failed'	
 			}
 		}

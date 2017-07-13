@@ -116,5 +116,16 @@
 	"profile.form.period":"Periode",
 	"profile.form.until_now":"Sampai Sekarang",
 
+	"profile.form.singgle":"Lajang",
+	"profile.form.married":"Menikah",
+	"profile.form.widow_widower":"Duda/Janda",
+	"profile.form.other":"Lainnya",
+
+	"profile.form.islam":"Islam",
+	"profile.form.kristen":"Kristen",
+	"profile.form.hindu":"Hindu",
+	"profile.form.budha":"Budha",
+	"profile.form.konghucu":"Konghucu",
+
 	"none":""
 }
