@@ -1,0 +1,135 @@
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+<div class="row block-flat content">
+  <form class="">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 form-inline padding-class">
+          <div class="header">              
+            <h3>{{lang('profile.form.basic_info')}}</h3>
+          </div>
+          <div class="content">
+            <table class="table" border="0px">
+              {% asyncAll f in form_profile.basic_info %}
+              <tr>
+                <td style="width:150px">
+                  <label for="">{{lang(f.label)}}</label>
+                </td>
+                <td>
+                  {%if f.type === 'text' %}
+                    <input type="{{f.type}}" name="{{f.name}}" class="{{f.class}}" style="width:100%" value="{{f.value}}">
+                  {% elseif f.type === 'radio' %}
+                    {% asyncAll ch in f.child %}
+                      <input type="{{f.type}}" name="{{f.name}}" class="{{ch.class}}" value="{{ch.value}}"> {{lang(ch.label)}}
+                    {% endall %}
+                  {% elseif f.type === 'dropdown' %}
+                    <select name="{{f.name}}" class="{{f.class}}" style="width:100%">
+                      {% asyncAll ch in f.child %}
+                        <option value="{{ch.value}}"> {{lang(ch.label)}}</option>
+                      {% endall %}
+                    </select>
+                  {%endif%}
+                </td>
+              </tr>
+              {% endall %}
+            </table>          
+          </div>
+        </div> <!-- end of .form-inline.padding-class -->
+        <div class="col-md-6 form-inline padding-class">
+          <div class="header">              
+            <h3>{{lang('profile.form.image')}}</h3>
+          </div>
+          <div class="content">
+            <img src="/uploads/profiles/no-image.png" alt="profile-image" class="img-thumbnail">
+            <a href="javascript.void()" class="btn btn-primary">{{lang('profile.form.btn_change_image')}}</a>
+          </div>
+
+          <div class="header">              
+            <h3>{{lang('profile.form.educational_details')}}</h3>
+          </div>
+          <div class="content">
+            {% asyncAll i in ['primary_school','junior_high_school','senior_high_school','university1','university2','university3'] %}
+            <div class="form-group" style="width:100%">
+              <input type="text" name="th_{{i}}" class="form-control col-xs-12" id="" placeholder="{{2006}}" style="width:50px">
+              <input type="text" name="{{i}}" class="form-control col-xs-12" id="" placeholder="{{i}}" style="width:80%">
+            </div>
+            {% endall %}
+          </div>
+        </div> <!-- end of .form-inline.padding-class -->
+
+      </div> <!-- end of .row -->
+    </div> <!-- end of .col-md-12 -->
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-11 form-inline padding-class">
+          <div class="header">              
+            <h3>{{lang('profile.form.certifications')}}</h3>
+          </div>
+          <div class="content">
+            <table class="table" border="0px">
+              {% asyncAll c in form_profile.certifications %}
+              <tr>
+                <td>
+                  <input type="text" name="{{c.period}}" class="form-control col-xs-12" value="{{c.period_value}}" style="margin:2px;" placeholder="2004">
+                  <input type="text" name="{{c.title_name}}" class="form-control col-xs-12" value="{{c.title_value}}" style="margin:2px;" placeholder="Title">
+                  <input type="text" name="{{c.instance_name}}" class="form-control col-xs-12" value="{{c.company_value}}" style="margin:2px;" placeholder="Instance Name">
+                  <input type="text" name="{{c.desc_name}}" class="form-control" value="{{c.desc_value}}" style="width:100%" placeholder="Description">
+                </td>
+              </tr>
+              {% endall %}
+            </table>  
+            <a href="javascript.void()" class="btn btn-primary pull-right">{{lang('profile.form.add')}}</a>
+
+          </div>
+        </div> <!-- end of .form-inline.padding-class -->
+      </div> <!-- end of .row -->
+      <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-11 form-inline padding-class">
+          <div class="header">              
+            <h3>{{lang('profile.form.job_experiences')}}</h3>
+          </div>
+          <div class="content">
+            <table class="table" border="0px">
+              {% asyncAll jE in form_profile.working_experiences %}
+              <tr>
+                <td>
+                  <input type="text" name="{{jE.title_name}}" class="{{jE.title_class}} col-xs-12" value="{{jE.title_value}}" style="margin:2px;" placeholder="Title">
+                  <input type="text" name="{{jE.company_name}}" class="{{jE.company_class}} col-xs-12" value="{{jE.company_value}}" style="margin:2px;" placeholder="Company Name">
+                  <input type="text" name="{{jE.start_name}}" class="{{jE.start_class}} col-xs-12" value="{{jE.start_value}}" style="margin:2px;" placeholder="2001">
+                  <input type="text" name="{{jE.end_name}}" class="{{jE.end_class}} col-xs-12" value="{{jE.end_value}}" style="margin:2px;" placeholder="2004">
+                  <input type="checkbox" name="{{jE.check_name}}" value="until_now"> {{lang('profile.form.until_now')}}
+                  <input type="text" name="{{jE.desc_name}}" class="{{jE.desc_class}}" value="{{jE.desc_value}}" style="width:100%" placeholder="Description">
+                </td>
+              </tr>
+              {% endall %}
+            </table>  
+            <a href="javascript.void()" class="btn btn-primary pull-right">{{lang('profile.form.add')}}</a>
+
+          </div>
+        </div> <!-- end of .form-inline.padding-class -->
+      </div> <!-- end of .row -->
+    </div>
+    <div class="col-md-7">
+      <a href="javascript.void()" class="btn btn-danger pull-right">{{lang('profile.form.cancel')}}</a>
+      <a href="javascript.void()" class="btn btn-warning pull-right">{{lang('profile.form.view_on_template')}}</a>
+      <a href="javascript.void()" class="btn btn-primary pull-right">{{lang('profile.form.submit')}}</a>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+$(function() {
+    $('input[name="date_of_birth"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    }, 
+    function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        var text = "You are {years} years old."
+        alert(text.replace('{years}', years));
+    });
+});
+</script>

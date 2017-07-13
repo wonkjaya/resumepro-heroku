@@ -1,5 +1,6 @@
 {
   "REGISTER FORM":"",
+	
 	"auth.register":"Daftar",
 	"auth.register.fullname":"Nama Lengkap",
 	"auth.register.phone":"No.Telp",
@@ -9,18 +10,60 @@
 	"auth.register.submit":"Simpan & Daftar",
 	"auth.register.cancel":"Batalkan",
 
+	"message.conf_password.same":"Kata Sandi tidak Cocok",
+	"message.email.required":"Email dibutuhkan",
+	"message.fullname.required":"Nama Lengkap dibutuhkan",
+	"message.phonenumber.required":"Nomor Telpon dibutuhkan",
+	"message.password.6.minchar":"Password Minimal 6 Karakter",
+	"message.password.required":"Kata Sandi dibutuhkan",
+	"messages.registration.success":"Selamat, Anda berhasil bergabung. Silahkan Cek Email Untuk Konfirmasi",
+
   "FORGOT PASS FORM":"",
 	"auth.forgot":"Reset Pass",
+	"auth.forgot.submit":"Reset Pass",
+	"messages.forgot.success":"Silahkan Cek Email Untuk Reset Password Anda",
+	"messages.forgot.notfound":"Email Belum Terdaftar.",
 
   "LOGIN FORM":"",
 	"auth.login":"Masuk",
 	
+
+	"general.menu.clients.dashboard":"Dashboard",
+	"general.menu.clients.my_profile":"Profil Saya",
+	"general.menu.clients.my_resume":"Resume",
+	"general.menu.clients.show_resume":"Lihat Resume",
+	"general.menu.clients.new_resume":"Buat Baru",
+	"general.menu.clients.reminder":"Pengingat",
+	"general.menu.clients.interview":"Jadwal Interview",
+	"general.menu.clients.activities":"Aktivitas",
+	"general.menu.clients.jobstreet":"Jobstreet.com",
+	"general.menu.clients.lokerwebid":"Loker.web.id",
+	"general.menu.clients.jobsid":"Jobs.id",
+	"general.menu.clients.find_job":"Cari Lowongan Kerja",
+	"general.menu.clients.all_jobs":"Semua Lowongan",
 
 	"general.menu.about":"Info",
 	"general.menu.invite":"Undang Teman",
 	"general.menu.templates":"Template",
 	"general.menu.contact":"Kontak",
 	"general.menu.login":"Masuk",
+	"general.menu.logout":"Keluar",
+
+	"general.menu.admin.active":"Aktif",
+	"general.menu.admin.account_crawling":"Account Crawling",
+	"general.menu.admin.account.facebook":"Facebook",
+	"general.menu.admin.account.twitter":"Twitter",
+	"general.menu.admin.account.linkin":"LinkIn",
+	"general.menu.admin.account.google":"Google",
+	"general.menu.admin.all":"Semua",
+	"general.menu.admin.jobs_post_crawling":"Loker Crawl",
+	"general.menu.admin.job.jobsid":"Jobs.id",
+	"general.menu.admin.job.jobstreet":"Jobstreet.com",
+	"general.menu.admin.job.lokerwebid":"Loker.web.id",
+	"general.menu.admin.dashboard":"Dashboard",
+	"general.menu.admin.logs":"Log",
+	"general.menu.admin.settings":"Pengaturan",
+	"general.menu.admin.user":"Pengguna",
 
 	"index.scroll1.h1":"BUAT RESUME ANDA SEMAKIN MENARIK SEKARANG",
 	"index.scroll1.description":"Kami membantu anda untuk mendapatkan tampilan resume anda semakin menarik dengan berbagai pilihan template yang tersedia",
@@ -41,7 +84,48 @@
 	"index.scroll5.phonenumber":"+62 853 3015 4845",
 	"index.scroll5.emailinfo":"admin@resumepro.com",
 
+	"messages.login.failed":"Email Dan Password Tidak Cocok",
+	"messages.login.need_verification":"Mohon Cek Email Anda Untuk Verifikasi",
+	"messages.login.banned":"Mohon Maaf, Akun Anda Sedang DiBanned",
 
+	"profile.form.basic_info":"Informasi Umum",
+	"profile.form.fullname":"Nama Lengkap",
+	"profile.form.place_of_birth":"Tempat Lahir",
+	"profile.form.date_of_birth":"Tgl Lahir",
+	"profile.form.gender":"Jenis Kelamin",
+	"profile.form.marital_status":"Status Perkawinan",
+	"profile.form.religion":"Agama",
+	"profile.form.nationality":"Kewarganegaraan",
+	"profile.form.address":"Alamat Lengkap",
+	"profile.form.phonenumber":"Nomor Telp.",
+	"profile.form.male":"Laki-Laki",
+	"profile.form.female":"Perempuan",
 
-	"---":""
+	"profile.form.educational_details":"Informasi Pendidikan",
+	"profile.form.score":"Nilai",
+
+	"profile.form.certifications":"Sertifikasi",
+	"profile.form.image":"Foto Profil",
+	"profile.form.btn_change_image":"Ganti",
+	"profile.form.add":"Tambah",
+	"profile.form.cancel":"Cancel",
+	"profile.form.submit":"Simpan",
+	"profile.form.view_on_template":"Lihat Resume",
+
+	"profile.form.job_experiences":"Pengalaman Kerja",
+	"profile.form.period":"Periode",
+	"profile.form.until_now":"Sampai Sekarang",
+
+	"profile.form.singgle":"Lajang",
+	"profile.form.married":"Menikah",
+	"profile.form.widow_widower":"Duda/Janda",
+	"profile.form.other":"Lainnya",
+
+	"profile.form.islam":"Islam",
+	"profile.form.kristen":"Kristen",
+	"profile.form.hindu":"Hindu",
+	"profile.form.budha":"Budha",
+	"profile.form.konghucu":"Konghucu",
+
+	"none":""
 }

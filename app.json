@@ -2,17 +2,17 @@
   "environments": {
     "test": {
       "env": {
-        "PHOTON_TORPEDOES": "online"
-	"PROTOCOL":"https"
-	"HOST":"resumepro.herokuapp.com"
-	"PORT":"80"
-	"APP_KEY":"n96M1TPG821EdN4mMIjnGKxGytx9W2UJ"
-	"NODE_ENV":"development"
-	"CACHE_VIEWS":"false"
-	"SESSION_DRIVER":"cookie"
+        "PHOTON_TORPEDOES": "online",
+      	"PROTOCOL":"https",
+      	"HOST":"resumepro.herokuapp.com",
+      	"PORT":"80",
+      	"APP_KEY":"n96M1TPG821EdN4mMIjnGKxGytx9W2UJ",
+      	"NODE_ENV":"development",
+      	"CACHE_VIEWS":"false",
+      	"SESSION_DRIVER":"cookie",
       },
       "scripts":{
-	"test":"node ."
+        "test":"node ."
       }
 
     }

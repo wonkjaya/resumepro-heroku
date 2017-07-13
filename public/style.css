@@ -4,6 +4,9 @@
 .login-btn{
   color: #43c31b !important;
 }
+.logout-btn{
+  color: #ff1012 !important;
+}
 .login-page-custom{
   background-color: #b3afae !important;
 }
