@@ -3,7 +3,7 @@
 const Email = use('App/Utils/EmailBase');
 const Lang = use('App/Http/Helpers/LanguageHelpers');
 const MainHelper = use('App/Http/Helpers/MainHelpers');
-const Model = use('App/Model/base');
+const Model = use('App/Model/Base');
 const my_language = 'id';
 const translate = new Lang(my_language).get_translate;
 const Validator = use('Validator')

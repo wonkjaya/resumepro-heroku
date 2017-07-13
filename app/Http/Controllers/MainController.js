@@ -3,7 +3,7 @@
 const Email = use('App/Utils/EmailBase');
 const Lang = use('App/Http/Helpers/LanguageHelpers');
 const MainHelper = use('App/Http/Helpers/MainHelpers');
-const Model = use('App/Model/base');
+const Model = use('App/Model/Base');
 const my_language = 'id';
 // const SiteURL = new MainHelper().get_host();
 const translate = new Lang(my_language).get_translate;
@@ -66,9 +66,9 @@ class MainController {
 				    		}
 				    	});
 				    	if(data.email === 'rohmanmail@gmail.com'){
-							res.redirect('/dashboard/default.html') // khusus administrator aja
+							return res.redirect('/dashboard/default.html') // khusus administrator aja
 				    	}else{
-				    		res.redirect('/clients/main.html')
+				    		return res.redirect('/clients/main.html')
 				    	}
 					}
 				}
@@ -77,7 +77,7 @@ class MainController {
 				_this.validation.message ='messages.login.failed'	
 			}
 		}
-     	_this.alert_type = 'danger';
+     		_this.alert_type = 'danger';
 		yield res.sendView('register_login_forgot', _this ); // harus menggunakan yield untuk merespon ke view
 	}
 
