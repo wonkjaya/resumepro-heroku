@@ -1,5 +1,7 @@
+.env
 node_modules
+!resumepro-1b09a0fa5b0e.json
+!jobcrawl-9e431-firebase-adminsdk-eqlfj-b38807e5ef.json
 storage
 !.gitkeep
-.env
 npm-debug.log
